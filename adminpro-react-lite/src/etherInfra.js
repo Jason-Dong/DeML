@@ -9,7 +9,7 @@ const setupProvider = async () => {
     signer = provider.getSigner();
   }
   return result;
-  };
+};
 const getProvider = ()=> {
   return provider;
 }
