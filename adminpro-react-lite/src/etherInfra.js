@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import * as abi from "assets/abi.json"
+import { abi } from "assets/abi"
 
 var provider = null;
 var signer = null;
@@ -8,7 +8,6 @@ var contract = null;
 const setupProvider = async () => {
   const result =  await window.ethereum.enable();
   if (result) {
-
     provider = new ethers.providers.Web3Provider(window.ethereum);
     signer = provider.getSigner();
   }
@@ -32,15 +31,18 @@ const getContract = () => {
 
 
 const setContract = (address) => {
+  console.log(abi);
   contract = new ethers.Contract(address, abi, getSigner())
-  console.log(address)
-  console.log(contract)
   return true;
 }
 
 
-const getDatasetLink = () => {
-  return contract.dataset_link
+const getDatasetLink = async () => {
+  const link = await contract.dataset_link.call()
+  if (link) {
+    return link
+  }
+  return null
 }
 
 
@@ -53,4 +55,4 @@ const getDatasetLink = () => {
 // }
 
 
-export {setupProvider, getProvider, getSigner, getContract, setContract}
+export {setupProvider, getProvider, getSigner, getContract, setContract, getDatasetLink}

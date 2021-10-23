@@ -16,12 +16,10 @@ function MetamaskGateway(props) {
     setMetamask(true)
   })
 
-function check (inputValue) {
-  console.log('check ran')
+function check(inputValue) {
   var _address = inputValue;
 
   if (setContract(_address)) {
-    console.log(_address)
     setAddress(true);
   }
 }
@@ -29,7 +27,7 @@ function check (inputValue) {
 
   function NiceButton() {
     const [inputValue, setInputValue] = useState(false);
-
+    
     return (
       <div class="container">
         <h1> DeML </h1>
@@ -39,8 +37,8 @@ function check (inputValue) {
           <h3>Address</h3>
           <input type="text" className="form-control" id="textbox" placeholder="Address" onChange={(e) => {setInputValue(e.target.value)}}/>
         </div>
-        <Button type="submit" onClick={()=>check(inputValue)}>Submit</Button>
-    </form>
+        <Button onClick={()=>check(inputValue)}>Submit</Button>
+      </form>
     </div>
     );
   }
