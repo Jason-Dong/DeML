@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 var provider = null;
 var signer = null;
+var contract = null;
 const setupProvider = async () => {
   const result =  await window.ethereum.enable();
   if (result) {
@@ -16,4 +17,8 @@ const getProvider = ()=> {
 const getSigner = ()=> {
   return signer;
 }
-export {setupProvider, getProvider, getSigner}
+const getContract = (address) => {
+ // get contract from address
+ return true;
+}
+export {setupProvider, getProvider, getSigner, getContract}

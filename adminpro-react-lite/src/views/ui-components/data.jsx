@@ -27,9 +27,9 @@ const abi = ""
 const address = ""
 
 
-var web3 = Web3(`https://mainnet.infura.io/v3/${API_KEY}`)
-var contract = web3.eth.Contract(abi, address)
-var link = contract.dataset_link
+//var web3 = Web3(`https://mainnet.infura.io/v3/${API_KEY}`)
+//var contract = web3.eth.Contract(abi, address)
+//var link = contract.dataset_link
 
 
 function httpGet(theUrl)
@@ -40,8 +40,8 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 
-var data = httpGet(link)
-console.log(data)
+//var data = httpGet(link)
+//console.log(data)
 
 
 const DataVisualizer = () => {
@@ -49,10 +49,10 @@ const DataVisualizer = () => {
       <Card>
             <CardBody>
                 <CardTitle>Visualizing the Dataset</CardTitle>
-                <a href="https://ipfs.io/ipfs/QmaqCzaiT6AqaMCcE5B2bUTRNKbtPsWGviKNveVkSN72vf"> Download Dataset </a>
+                // <a href="https://ipfs.io/ipfs/QmaqCzaiT6AqaMCcE5B2bUTRNKbtPsWGviKNveVkSN72vf"> Download Dataset </a>
                 <ScrollMenu>
                   <CsvToHtmlTable
-                    data={data}  
+                    // data={data}  
                     csvDelimiter=","
                     tableClassName="table table-striped table-hover"
                   />
