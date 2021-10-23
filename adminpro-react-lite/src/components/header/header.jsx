@@ -37,8 +37,7 @@ const Header = () => {
                 <div className="navbar-header" id="logobg" data-logobg="skin6">
                     {/*--------------------------------------------------------------------------------*/}
                     {/* Logos Or Icon will be goes here for Light Layout && Dark Layout                */}
-
-                    <h1>DeML</h1>
+                    <h1 style={{white-space: "nowrap"}}>DeML: Decentralized Machine Learning</h1>
                     {/*--------------------------------------------------------------------------------*/}
                     {/* Mobile View Toggler  [visible only after 768px screen]                         */}
                     {/*--------------------------------------------------------------------------------*/}

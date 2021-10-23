@@ -11,7 +11,7 @@ import { Line } from 'react-chartjs-2';
 
 //Line chart
 let lineData = {
-    labels: [0,10,20,30,40,50,60,70,80,90,100],
+    labels: [0,1,2,3,4,5,6,7,8,9,10],
     datasets: [{
         label: 'Number of Miners',
         borderWidth: 1,
@@ -19,7 +19,7 @@ let lineData = {
         borderColor: 'rgb(94,114,228)',
         pointBorderColor: 'rgb(94,114,228)',
         pointBackgroundColor: 'rgb(94,114,228)',
-        data: [0,0,0,0, 1, 1, 1, 2, 12, 556, 14 ]
+        data: [0,87,93,91,99,92,88,95,78,97, 100]
     }]
 };
 
@@ -29,13 +29,13 @@ const SalesSummary = () => {
             <CardBody>
                 <div className="d-flex align-items-center">
                     <div>
-                        <CardTitle>Distribution of Past Scores</CardTitle>
+                        <CardTitle>Distribution of Your Past Submissions</CardTitle>
                     </div>
 
                     <div className="ml-auto d-flex align-items-center">
                         <ul className="list-inline font-12 dl mr-3 mb-0">
                             <li className="border-0 p-0 text-info list-inline-item">
-                                <i className="fa fa-circle"></i> # Miners
+                                <i className="fa fa-circle"></i> Model Performance
 								</li>
 
                         </ul>
@@ -46,22 +46,22 @@ const SalesSummary = () => {
                 <Row>
                     <Col lg="4">
                         <div className="p-3 active w-100 text-truncate">
-                            <h6 className="text-white">Number of Miners</h6>
-                            <h3 className="text-white m-b-0">573</h3>
+                            <h6 className="text-white">Total Submissions</h6>
+                            <h3 className="text-white m-b-0">420</h3>
                         </div>
 
                     </Col>
                     <Col lg="4">
                         <div className="p-3 w-100 text-truncate">
-                            <h6 className="text-white">Mean</h6>
-                            <h3 className="text-white m-b-0">93.4</h3>
+                            <h6 className="text-white">Best Score</h6>
+                            <h3 className="text-white m-b-0">69</h3>
                         </div>
                     </Col>
 
                     <Col lg="4">
                         <div className="p-3 w-100 text-truncate">
-                            <h6 className="text-white">Standard Deviation</h6>
-                            <h3 className="text-white m-b-0">0.27</h3>
+                            <h6 className="text-white">Latest Score</h6>
+                            <h3 className="text-white m-b-0">0</h3>
                         </div></Col>
                 </Row>
             </div>
