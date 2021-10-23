@@ -10,14 +10,16 @@ contract DeML {
     uint public competition_time;
     uint public prize_fund;
     uint public buy_in;
-    uint mining_fees;
-    uint mining_increment;
-    uint byte_limit;
-    uint bestPerformance; //Performance as % * 1000 (to 5 digits)
-    string bestModel;
-    address bestModelMaker;
+    uint public mining_fees;
+    uint public mining_increment;
+    uint public byte_limit;
+    uint public bestPerformance; //Performance as % * 1000 (to 5 digits)
+    string public bestModel;
+    address public bestModelMaker;
     mapping(address=> bool) public registration;
     mapping(string=> address) public model_pool_ownership;
+    string[] private newModels;
+    string[] public mineable_models;
     mapping(string=> mapping(address=> uint)) public mining_ledger_guesses;
     mapping(string => address[]) public mining_ledger;
 
@@ -52,6 +54,19 @@ contract DeML {
       require(bytes(model).length < byte_limit);
       require(model_pool_ownership[model]==address(0));
       model_pool_ownership[model] = msg.sender;
+      mineable_models.push(model);
+    }
+    function pruneModels() private {
+      for(uint i=0;i < mineable_models.length;i++) {
+         if (model_pool_ownership[mineable_models[i]]!=address(0)) {
+            newModels.push(mineable_models[i]);
+         }
+      }
+      mineable_models = newModels;
+      delete newModels;
+    }
+    function getModels() public view returns (string[] memory) {
+      return mineable_models;
     }
     function minerGuess(string memory model, uint performance) public payable{
       require(block.timestamp>=registration_time);
@@ -73,6 +88,7 @@ contract DeML {
           bestModelMaker = model_pool_ownership[model];
 
         }
+        pruneModels();
         model_pool_ownership[model] = address(0);
         delete mining_ledger[model];
 
