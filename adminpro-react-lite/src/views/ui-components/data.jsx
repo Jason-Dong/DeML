@@ -1,6 +1,3 @@
-import Web3 from 'web3'
-
-
 import { CsvToHtmlTable } from 'react-csv-to-table';
 import * as React from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
@@ -19,17 +16,10 @@ import {
     Col
 } from 'reactstrap';
 
+import ContractAPI from "../../ContractAPI"
+
 //var data = Papa.parse('https://ipfs.io/ipfs/QmaqCzaiT6AqaMCcE5B2bUTRNKbtPsWGviKNveVkSN72vf');
 //var csv = Papa.unparse(data);
-
-const API_KEY = ""
-const abi = ""
-const address = ""
-
-
-var web3 = Web3(`https://mainnet.infura.io/v3/${API_KEY}`)
-var contract = web3.eth.Contract(abi, address)
-var link = contract.dataset_link
 
 
 function httpGet(theUrl)
@@ -40,7 +30,11 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 
-var data = httpGet(link)
+abi = ""
+address = ""
+
+ContractAPI = ContractAPI(abi, address)
+var data = httpGet(ContractAPI.getDatasetLink())
 console.log(data)
 
 

@@ -13,6 +13,7 @@ import {
     Col
 } from 'reactstrap';
 
+
 const UploadComponent = () => {
   return (
     <Card>
