@@ -28,12 +28,16 @@ contract DeML {
         dataset_link = _ipfs_link;
         registration_time = block.timestamp+_registration_time;
         competition_time = registration_time + _competition_time;
-        prize_fund = msg.value;
-        buy_in = prize_fund/10;
-        mining_fees = prize_fund/5;
-        prize_fund -= mining_fees;
+
         byte_limit = _byte_limit;
         host=msg.sender;
+    }
+    function depositPrizeFund() public payable {
+      require(host==msg.sender);
+      prize_fund = msg.value;
+      buy_in = prize_fund/10;
+      mining_fees = prize_fund/5;
+      prize_fund -= mining_fees;
     }
     function register() public payable{
       require(msg.value> buy_in);
