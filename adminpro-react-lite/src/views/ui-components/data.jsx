@@ -15,12 +15,10 @@ import {
     Row,
     Col
 } from 'reactstrap';
-
-import ContractAPI from "../../ContractAPI"
+import { getContract } from "etherInfra"
 
 //var data = Papa.parse('https://ipfs.io/ipfs/QmaqCzaiT6AqaMCcE5B2bUTRNKbtPsWGviKNveVkSN72vf');
 //var csv = Papa.unparse(data);
-
 
 function httpGet(theUrl)
 {
@@ -30,12 +28,10 @@ function httpGet(theUrl)
     return xmlHttp.responseText;
 }
 
-abi = ""
-address = ""
-
-ContractAPI = ContractAPI(abi, address)
-var data = httpGet(ContractAPI.getDatasetLink())
-console.log(data)
+if (getContract()) {
+  var link = httpGet(getContract().getDatasetLink())
+  var data = httpGet(link)
+}
 
 
 const DataVisualizer = () => {
@@ -43,7 +39,7 @@ const DataVisualizer = () => {
       <Card>
             <CardBody>
                 <CardTitle>Visualizing the Dataset</CardTitle>
-                <a href="https://ipfs.io/ipfs/QmaqCzaiT6AqaMCcE5B2bUTRNKbtPsWGviKNveVkSN72vf"> Download Dataset </a>
+                <a href={link}> Download Dataset </a>
                 <ScrollMenu>
                   <CsvToHtmlTable
                     data={data}  

@@ -29,16 +29,6 @@ const Projects = () => {
                         <CardTitle>Leaderboard of Scores</CardTitle>
                         <CardSubtitle>Each Submission</CardSubtitle>
                     </div>
-                    <div className="ml-auto d-flex no-block align-items-center">
-                        <div className="dl">
-                            <Input type="select" className="custom-select">
-                                <option value="0">Monthly</option>
-                                <option value="1">Daily</option>
-                                <option value="2">Weekly</option>
-                                <option value="3">Yearly</option>
-                            </Input>
-                        </div>
-                    </div>
                 </div>
                 <Table className="no-wrap v-middle" responsive>
                     <thead>
