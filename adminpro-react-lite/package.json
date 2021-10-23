@@ -1,0 +1,51 @@
+{
+    "name": "adminpro-react-admin",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": "https://wrappixel.com/demos/free-admin-templates/adminpro-react-lite/main/",
+    "dependencies": {
+        "@progress/kendo-data-query": "^1.5.5",
+        "@progress/kendo-drawing": "^1.15.0",
+        "@progress/kendo-licensing": "^1.2.1",
+        "@progress/kendo-react-animation": "^4.9.0",
+        "@progress/kendo-react-data-tools": "^4.9.0",
+        "@progress/kendo-react-dateinputs": "^4.9.0",
+        "@progress/kendo-react-dropdowns": "^4.9.0",
+        "@progress/kendo-react-grid": "^4.9.0",
+        "@progress/kendo-react-inputs": "^4.9.0",
+        "@progress/kendo-react-intl": "^4.9.0",
+        "@progress/kendo-react-upload": "^4.9.0",
+        "bootstrap": "4.1.3",
+        "chart.js": "2.7.2",
+        "csv-string": "^4.0.1",
+        "history": "4.7.2",
+        "node-sass": "^4.12.0",
+        "papaparse": "^5.3.1",
+        "react": "^16.8.3",
+        "react-chartjs-2": "^2.7.4",
+        "react-csv-to-table": "0.0.4",
+        "react-dom": "^16.8.3",
+        "react-perfect-scrollbar": "1.2.0",
+        "react-router-dom": "4.2.2",
+        "react-scripts": "^3.4.1",
+        "reactstrap": "6.4.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}
