@@ -63,5 +63,21 @@ const getDatasetLink = async () => {
    )
  }
 
+ const getFinished = async () => {
+   const link = await contract.ended()
+   if (link) {
+     return link
+   }
+   return null
+ }
 
-export {setupProvider, getProvider, getSigner, getContract, setContract, getDatasetLink, uploadModel}
+ const withdraw = async () => {
+   await contract.withdraw().call()
+ }
+
+ const getAddress = () => {
+   return window.ethereum.selectedAddress
+ }
+
+
+export {setupProvider, getProvider, getSigner, getContract, setContract, getDatasetLink, uploadModel, getFinished, getAddress, withdraw}

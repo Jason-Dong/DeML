@@ -16,7 +16,7 @@ import {
     Row,
     Col
 } from 'reactstrap';
-import { getContract, getDatasetLink } from "etherInfra"
+import { getContract, getDatasetLink, getFinished, getAddress, withdraw } from "etherInfra"
 
 //var data = Papa.parse('https://ipfs.io/ipfs/QmaqCzaiT6AqaMCcE5B2bUTRNKbtPsWGviKNveVkSN72vf');
 //var csv = Papa.unparse(data);
@@ -33,24 +33,24 @@ function httpGet(theUrl)
 const DataVisualizerWrapper = () => {
   var ipfs_link;
   var data;
-  
-  const updateLink = link => {
-    ipfs_link = link;
-  }
   const [link, setLink] = useState("")
+  const [finished, setFinished] = useState(false);
+  const [winner, setWinner] = useState("");
   getDatasetLink().then(link => setLink(link))
-
-  console.log(ipfs_link)
+  getFinished().then(fin => setFinished(fin))
   if (link!="") {
     data = httpGet(link)
+  console.log(link)
+  if (!finished) {
   return (
+
     <Card>
           <CardBody>
               <CardTitle>Visualizing the Dataset</CardTitle>
               <a href={link}> Download Dataset </a>
               <ScrollMenu>
                 <CsvToHtmlTable
-                  data={data}  
+                  data={data}
                   csvDelimiter=","
                   tableClassName="table table-striped table-hover"
                 />
@@ -58,6 +58,28 @@ const DataVisualizerWrapper = () => {
           </CardBody>
     </Card>
   );
+} else {
+  if (winner == getAddress()) {
+    return (
+    <Card>
+          <CardBody>
+              <CardTitle>The competition is over!</CardTitle>
+              <h3> Congratulations </h3> 
+              <Button onClick={()=>withdraw()}>Collect Reward</Button>
+          </CardBody>
+    </Card>
+  );
+  } else {
+  return (
+
+    <Card>
+          <CardBody>
+              <CardTitle>Competition Over</CardTitle>
+          </CardBody>
+    </Card>
+  );
+}
+}
   }
   else {
     return ("Loading")
