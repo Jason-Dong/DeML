@@ -14,10 +14,10 @@ import sys
 # returns basic tensorflow model
 def tensorflow_basic_model():
     model = tf.keras.Sequential()
-    model.add(tf.keras.layers.Dense(256, activation = tf.nn.softmax))
-    model.add(tf.keras.layers.Dense(128, activation = tf.nn.relu))
-    model.add(tf.keras.layers.Dense(10))
-    model.build((None, 16, 16))
+    model.add(tf.keras.layers.Dense(2, activation = tf.nn.softmax))
+    model.add(tf.keras.layers.Dense(2, activation = tf.nn.relu))
+    model.add(tf.keras.layers.Dense(1))
+    model.build((None, 2, 1))
     model.compile(optimizer="rmsprop", loss="mse")
     #model.fit()
     return model
@@ -113,6 +113,7 @@ if __name__ == "__main__":
     #compressor = ModelProcess("TF")
     compressor = ModelProcess("TF")
     compressed = compressor.compress(model)
+    print(compressed)
     f = open('out', 'wb')
     f.write(compressed)
     f.close()

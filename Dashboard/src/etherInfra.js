@@ -48,8 +48,15 @@ const getDatasetLink = async () => {
 
  const uploadModel = (modelBytestring) => {
    console.log("HERE!!!")
-   contract.submitModel(modelBytestring).then(
-       (resp) => console.log(resp)
+   console.log(getSigner())
+   console.log(new Uint8Array(modelBytestring))
+   console.log(ethers.utils.isBytesLike(new Uint8Array(modelBytestring)));
+   getSigner().getAddress().then(resp=> {console.log(resp)})
+   contract.functions.submitModel(new Uint8Array(modelBytestring)).then(
+       (resp,error) => {
+         console.log(resp);
+         console.log(error);
+       }
    ).catch(
            (err) => new Error(err.message)
 
