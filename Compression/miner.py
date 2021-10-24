@@ -9,7 +9,7 @@ class Miner:
             self.miner_api = MinerAPI(self.infura_api_key, contract_address, contract_abi)
         except ValueError as error:
             raise error
-    
+
     def run():
         while True:
             job = self.miner_api.get_job()
@@ -18,9 +18,9 @@ class Miner:
                 compressor = Model("TF")
                 model = compressor.decompress(model_bytes)
                 X_train, y_train = job["dataset"]
-                accuracy = model.accuracy(X_train, y_train)
+                accuracy = int(model.accuracy(X_train, y_train) * 100000)
                 try:
                     self.miner_api.send_to_contract(model, accuracy)
                 except:
-                    continue    
+                    continue
                 job = None

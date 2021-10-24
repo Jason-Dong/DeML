@@ -1,7 +1,7 @@
 import numpy as np
 import math
 from io import BytesIO
-import dill,base64,tempfile 
+import dill,base64,tempfile
 from joblib import load
 from keras.models import model_from_json
 import tensorflow as tf
@@ -33,9 +33,9 @@ def pytorch_basic_model():
     return model
 
 class ModelProcess:
-    
+
     # consider pruning model for them
-    
+
     def __init__(self, type_):
         '''
         Args:
@@ -67,14 +67,14 @@ class ModelProcess:
                 "model": model_json,
                 "weights": model.get_weights()
             }
-            
+
             model_bytes = base_64_convert(model_dict)
             compressed = zlib.compress(model_bytes)
             return compressed
 
         elif self.type == "TORCH":
             # save pytorch model as a sequence of bytes
-            
+
             model_bytes = base_64_convert(model)
             compressed = zlib.compress(model_bytes, 9)
             return compressed
@@ -98,7 +98,7 @@ class ModelProcess:
             model = model_from_json(model_dict_json["model"])
             model.set_weights(model_dict_json["weights"])
             return model
-            
+
         elif self.type == "TORCH":
             # open pytorch model as a model
             uncompressed_bytes = zlib.decompress(compressed_bytes_string)
@@ -109,17 +109,15 @@ class ModelProcess:
 if __name__ == "__main__":
     print("Running model compression test")
     #model = tensorflow_basic_model()
-    model = pytorch_basic_model()
+    model = tensorflow_basic_model()
     #compressor = ModelProcess("TF")
-    compressor = ModelProcess("TORCH")
+    compressor = ModelProcess("TF")
     compressed = compressor.compress(model)
-    f = open('/tmp/output', 'wb')
+    f = open('out', 'wb')
     f.write(compressed)
     f.close()
     print("Now compressed completely and decompressing it")
-    with open('/tmp/output', 'rb') as f:
+    with open('out', 'rb') as f:
         bytes_ = f.read()
     model = compressor.decompress(bytes_)
-    #model.summary()
-    print(model)
-
+    model.summary()
