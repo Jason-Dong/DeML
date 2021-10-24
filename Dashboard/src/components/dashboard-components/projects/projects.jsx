@@ -1,4 +1,7 @@
 import React from "react";
+import { ethers } from "ethers";
+import {useState} from 'react';
+import { getParticipants, getBest } from "../../../etherInfra";
 
 import img1 from 'assets/images/users/1.jpg';
 import img2 from 'assets/images/users/2.jpg';
@@ -15,8 +18,55 @@ import {
     
 } from 'reactstrap';
 
-const Projects = () => {
+function zip(arrays) {
+    return arrays[0].map(function(_,i){
+        return arrays.map(function(array){return array[i]})
+    });
+}
 
+const SingleCardView = (props) => {
+    return (
+        <tr>
+            <td>
+                <div className="d-flex no-block align-items-center">
+                    <div className="">
+                        <h5 className="mb-0 font-16 font-medium">{props.address}</h5></div>
+                </div>
+            </td>
+            <td>{props.best}</td>
+        </tr>
+    );
+}
+
+const AllCardViews = (p) => {
+    var rows = [];
+    for (const [key, value] of Object.entries(p)) {
+        rows.push(<SingleCardView address={key} best={value} />);
+    }
+    return rows;
+}
+
+const Projects = () => {
+    const [p, setP] = useState({})
+    const participantScores = {};
+
+    async function setParticipants(participants) 
+    {
+        participants = participants[0]
+        for (const participant of participants) {
+            const best = await getBest(participant);
+            participantScores[participant]=parseInt(best.toString())
+        }
+    }
+
+    getParticipants().then(participants => {
+        setParticipants(participants).then(()=> {
+            setP(participantScores);
+        });
+        
+    })
+    if (p) {    
+    console.log("outside loop", p)
     return (
         /*--------------------------------------------------------------------------------*/
         /* Used In Dashboard-4 [General]                                                  */
@@ -38,47 +88,16 @@ const Projects = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div className="d-flex no-block align-items-center">
-                                    <div className="">
-                                        <h5 className="mb-0 font-16 font-medium">Address 1</h5></div>
-                                </div>
-                            </td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div className="d-flex no-block align-items-center">
-                                    <div className="">
-                                        <h5 className="mb-0 font-16 font-medium">Address 2</h5></div>
-                                </div>
-                            </td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div className="d-flex no-block align-items-center">
-                                    <div className="">
-                                        <h5 className="mb-0 font-16 font-medium">Address 3</h5></div>
-                                </div>
-                            </td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div className="d-flex no-block align-items-center">
-                                    <div className="">
-                                        <h5 className="mb-0 font-16 font-medium">Address 4</h5></div>
-                                </div>
-                            </td>
-                            <td>10</td>
-                        </tr>
+                        {AllCardViews(p)}
                     </tbody>
                 </Table>
             </CardBody>
         </Card>
     );
+    }
+    else {
+        return "Loading"
+    }
 }
 
 export default Projects;

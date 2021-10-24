@@ -2,6 +2,8 @@ import { CsvToHtmlTable } from 'react-csv-to-table';
 import * as React from "react";
 import {useState} from 'react';
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+
+
 import * as CSV from 'csv-string';
 import Papa from "../../../node_modules/papaparse/"
 import {
@@ -64,7 +66,7 @@ const DataVisualizerWrapper = () => {
     <Card>
           <CardBody>
               <CardTitle>The competition is over!</CardTitle>
-              <h3> Congratulations </h3> 
+              <h3> Congratulations </h3>
               <Button onClick={()=>withdraw()}>Collect Reward</Button>
           </CardBody>
     </Card>

@@ -47,14 +47,14 @@ const SalesSummary = () => {
                     <Col lg="4">
                         <div className="p-3 active w-100 text-truncate">
                             <h6 className="text-white">Total Submissions</h6>
-                            <h3 className="text-white m-b-0">420</h3>
+                            <h3 className="text-white m-b-0">1</h3>
                         </div>
 
                     </Col>
                     <Col lg="4">
                         <div className="p-3 w-100 text-truncate">
                             <h6 className="text-white">Best Score</h6>
-                            <h3 className="text-white m-b-0">69</h3>
+                            <h3 className="text-white m-b-0">89</h3>
                         </div>
                     </Col>
 

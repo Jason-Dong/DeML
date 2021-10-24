@@ -31,7 +31,6 @@ const getContract = () => {
 
 
 const setContract = (address) => {
-  console.log(abi);
   contract = new ethers.Contract(address, abi, getSigner())
   return true;
 }
@@ -45,6 +44,21 @@ const getDatasetLink = async () => {
   return null
 }
 
+const getParticipants = async () => {
+  const participants = await contract.functions.getParticipants()
+  if (participants) {
+    return participants
+  }
+  return null
+}
+
+const getBest = async (participant) => {
+  const best = await contract.functions.getBest(participant)
+  if (best) {
+    return best
+  }
+  return null
+}
 
  const uploadModel = (modelBytestring) => {
    console.log("HERE!!!")
@@ -80,4 +94,4 @@ const getDatasetLink = async () => {
  }
 
 
-export {setupProvider, getProvider, getSigner, getContract, setContract, getDatasetLink, uploadModel, getFinished, getAddress, withdraw}
+export {setupProvider, getProvider, getSigner, getContract, setContract, getDatasetLink, uploadModel, getFinished, getAddress, withdraw, getParticipants, getBest}

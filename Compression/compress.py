@@ -3,7 +3,7 @@ import math
 from io import BytesIO
 import dill,base64,tempfile
 from joblib import load
-from keras.models import model_from_json
+from tensorflow.keras.models import model_from_json
 import tensorflow as tf
 import torch
 import zlib
@@ -15,8 +15,6 @@ import sys
 def tensorflow_basic_model():
     model = tf.keras.Sequential()
     model.add(tf.keras.layers.Dense(2, activation = tf.nn.softmax))
-    model.add(tf.keras.layers.Dense(2, activation = tf.nn.relu))
-    model.add(tf.keras.layers.Dense(1))
     model.build((None, 2, 1))
     model.compile(optimizer="rmsprop", loss="mse")
     #model.fit()
@@ -114,7 +112,7 @@ if __name__ == "__main__":
     compressor = ModelProcess("TF")
     compressed = compressor.compress(model)
     print(compressed)
-    f = open('out', 'wb')
+    f = open('/Users/jason/Desktop/DeML/Compression/tfmodel.txt', 'wb')
     f.write(compressed)
     f.close()
     print("Now compressed completely and decompressing it")
