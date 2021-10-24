@@ -2,6 +2,8 @@ import { CsvToHtmlTable } from 'react-csv-to-table';
 import * as React from "react";
 import {useState} from 'react';
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+
+
 import * as CSV from 'csv-string';
 import Papa from "../../../node_modules/papaparse/"
 import {
@@ -39,6 +41,8 @@ const DataVisualizerWrapper = () => {
   }
   const [link, setLink] = useState("")
   getDatasetLink().then(link => setLink(link))
+
+
 
   console.log(ipfs_link)
   if (link!="") {
