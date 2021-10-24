@@ -342,7 +342,7 @@ abi = [
 	}
 ]
 
-address = "0x49b419CC9379fcb57503ba17cC14C8a37798F85c"
+address = "0x0Bd5A2529E9DF11A3Cab95231c3730d7D62d3e2F"
 
 if __name__ == "__main__":
     print("Creating Minor")
