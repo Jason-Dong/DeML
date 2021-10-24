@@ -12,6 +12,7 @@ import {
     Row,
     Col
 } from 'reactstrap';
+import { uploadModel } from "../../etherInfra";
 
 
 const UploadComponent = () => {
@@ -24,8 +25,7 @@ const UploadComponent = () => {
                       multiple={true}
                       defaultFiles={[]}
                       withCredentials={false}
-                      saveUrl={"https://demos.telerik.com/kendo-ui/service-v4/upload/save"}
-                      removeUrl={"https://demos.telerik.com/kendo-ui/service-v4/upload/remove"}
+                      onAdd={(event)=> (event.newState[0].getRawFile().arrayBuffer().then(buffer=> uploadModel(buffer)))}
                     />
             </CardBody>
     </Card>

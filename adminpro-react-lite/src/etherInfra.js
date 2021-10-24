@@ -46,13 +46,15 @@ const getDatasetLink = async () => {
 }
 
 
-// uploadModel(modelBytestring) {
-//   return this.contract.submitModel(modelBytestring).then(
-//       () => "Success"
-//   ).catch(
-//       (err) => new Error(err.message)
-//   )
-// }
+ const uploadModel = (modelBytestring) => {
+   console.log("HERE!!!")
+   contract.submitModel(modelBytestring).then(
+       (resp) => console.log(resp)
+   ).catch(
+           (err) => new Error(err.message)
+
+   )
+ }
 
 
-export {setupProvider, getProvider, getSigner, getContract, setContract, getDatasetLink}
+export {setupProvider, getProvider, getSigner, getContract, setContract, getDatasetLink, uploadModel}

@@ -30,9 +30,9 @@ export const abi = [
 		"name": "bestModel",
 		"outputs": [
 			{
-				"internalType": "string",
+				"internalType": "bytes",
 				"name": "",
-				"type": "string"
+				"type": "bytes"
 			}
 		],
 		"stateMutability": "view",
@@ -128,9 +128,9 @@ export const abi = [
 		"name": "getModels",
 		"outputs": [
 			{
-				"internalType": "string[]",
+				"internalType": "bytes[]",
 				"name": "",
-				"type": "string[]"
+				"type": "bytes[]"
 			}
 		],
 		"stateMutability": "view",
@@ -147,9 +147,9 @@ export const abi = [
 		"name": "mineable_models",
 		"outputs": [
 			{
-				"internalType": "string",
+				"internalType": "bytes",
 				"name": "",
-				"type": "string"
+				"type": "bytes"
 			}
 		],
 		"stateMutability": "view",
@@ -158,9 +158,9 @@ export const abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "string",
+				"internalType": "bytes",
 				"name": "model",
-				"type": "string"
+				"type": "bytes"
 			},
 			{
 				"internalType": "uint256",
@@ -202,9 +202,9 @@ export const abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "string",
+				"internalType": "bytes",
 				"name": "",
-				"type": "string"
+				"type": "bytes"
 			},
 			{
 				"internalType": "uint256",
@@ -226,9 +226,9 @@ export const abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "string",
+				"internalType": "bytes",
 				"name": "",
-				"type": "string"
+				"type": "bytes"
 			},
 			{
 				"internalType": "address",
@@ -250,9 +250,9 @@ export const abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "string",
+				"internalType": "bytes",
 				"name": "",
-				"type": "string"
+				"type": "bytes"
 			}
 		],
 		"name": "model_pool_ownership",
@@ -321,9 +321,9 @@ export const abi = [
 	{
 		"inputs": [
 			{
-				"internalType": "string",
+				"internalType": "bytes",
 				"name": "model",
-				"type": "string"
+				"type": "bytes"
 			}
 		],
 		"name": "submitModel",
