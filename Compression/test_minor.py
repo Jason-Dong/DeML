@@ -1,4 +1,4 @@
-from miner import Miner
+from minor import Minor
 
 abi = [
 	{
@@ -342,10 +342,10 @@ abi = [
 	}
 ]
 
-address = "0xcE3e6DaAb2517511765173db70Caadc760777956"
+address = "0x49b419CC9379fcb57503ba17cC14C8a37798F85c"
 
-if __name__ == "__main__"
-    print("Creating Miner")
-    my_miner = Miner("f848e446cf67415b9298d593d547936b")
-    my_miner.connect(address, abi)
-    my_miner.run()
+if __name__ == "__main__":
+    print("Creating Minor")
+    my_minor = Minor("9aa3d95b3bc440fa88ea12eaa4456161")
+    my_minor.connect(address, abi)
+    my_minor.run()
