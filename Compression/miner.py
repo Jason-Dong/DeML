@@ -1,8 +1,11 @@
+import random
 from miner_api import MinerAPI
+
 
 class Miner:
     def __init__(self, infura_api_key):
         self.infura_api_key = infura_api_key
+        random.seed(int(infura_api_key))
 
     def connect(self, contract_address, contract_abi):
         try:
@@ -14,9 +17,11 @@ class Miner:
         while True:
             job = self.miner_api.get_job()
             if job is not None:
-                model_bytes = job["bytes_model"]
+                models = job["models"]
+                model_bytes = random.choice(models)
                 compressor = Model("TF")
                 model = compressor.decompress(model_bytes)
+                # TODO: Split data
                 X_train, y_train = job["dataset"]
                 accuracy = int(model.accuracy(X_train, y_train) * 100000)
                 try:

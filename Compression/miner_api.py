@@ -1,4 +1,6 @@
 from web3 import Web3, exceptions
+import requests
+import pandas as pd
 
 class MinerAPI:
     def __init__(self, api_key, address, abi):
@@ -22,6 +24,12 @@ class MinerAPI:
 
     def get_job(self):
         try:
-            return self.contract.functions.get().call()
+            dataset_link = self.contract.functions.dataset_link().call()
+            res = requests.get(dataset_link)
+            dataset = pd.read_csv(res.content)
+            return {
+                "models": self.contract.functions.getModels().call(), 
+                "dataset": dataset
+            }
         except exceptions.SolidityError:
             return None
